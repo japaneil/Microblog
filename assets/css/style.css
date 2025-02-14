@@ -1,0 +1,472 @@
+/* Define the gradient animation */
+@keyframes sweepGradient {
+  0% {
+    background-position: -200%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+/* Define the sweeping gradient animation */
+@keyframes sweepGradient {
+  0% {
+    background-position: 200% 0; /* Start at the far right */
+  }
+  100% {
+    background-position: -200% 0; /* Move to the far left */
+  }
+}
+
+/* Define the sweeping gradient animation */
+@keyframes sweepGradient {
+  0% {
+    background-position: 200% 0; /* Start at the far right */
+  }
+  100% {
+    background-position: -200% 0; /* Move to the far left */
+  }
+}
+
+/* Apply the gradient and animation */
+.sweeping-gradient {
+  font-size: 3rem;
+  font-family: "Josefin Sans", sans-serif;
+  color: transparent;
+  background-image: linear-gradient(
+    -225deg,
+    #d299c2 0%,     /* Soft lavender at the start */
+    #8ec5fc 29%,    /* Light blue as the transition point */
+    #d299c2 67%,    /* Lavender continues */
+    #8ec5fc 100%    /* Light blue at the end */
+  );
+  background-size: 500% auto; /* Stretch the background to make the transition smoother */
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: sweepGradient 15s linear infinite; /* Slow down the animation */
+  text-align: center;
+}
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  color: #d299c2; /* Change color on hover */
+  transform: scale(1.1); /* Slightly enlarge the text */
+}
+
+/* Blog Section */
+.blog-posts {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.post {
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.post .content {
+  color: #393646;
+}
+
+.post h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  color: #393646;
+}
+
+.post .date {
+  font-size: 0.9em;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.post .description {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  color: #393646;
+}
+
+.read-more {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+  color: #d299c2; /* Change color on hover */
+  transform: scale(1.1); /* Slightly enlarge the text */
+}
+
+/* Pagination */
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pagination a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.pagination a:hover {
+  text-decoration: underline;
+  color: #d299c2; /* Change color on hover */
+  transform: scale(1.1); /* Slightly enlarge the text */
+}
+
+/* Footer */
+
+/* Ensure body and html take the full height of the page */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Set up flexbox on the body */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Push footer to the bottom */
+}
+
+/* Main content area should grow to fill available space */
+main {
+  flex-grow: 1;
+}
+
+/* Footer styling */
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Questrial&display=swap');
+
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: 'Questrial', sans-serif;
+  background-color: #393646; /* Dark background */
+  color: #F4EEE0; /* Light text color for readability */
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Center content */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #2d2b3b;
+  border-radius: 15px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 3rem;
+  color: #8ec5fc; /* Soft blue */
+  background-image: linear-gradient(to left, #d299c2, #8ec5fc);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientText 3s linear infinite;
+}
+
+@keyframes gradientText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Main content section */
+.main-content {
+  margin-top: 30px;
+}
+
+.main-content h2 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.main-content p {
+  font-size: 1rem;
+  color: #e0e6f4;
+  margin-bottom: 20px;
+}
+
+/* Button styles */
+button {
+  background-color: #8ec5fc; /* Light blue */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #d299c2; /* Lavender on hover */
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Navigation Menu */
+.navbar {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar li {
+  display: inline;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #F4EEE0;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.2rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #8ec5fc;
+  transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #e0e6f4;
+}
+
+footer a {
+  color: #8ec5fc;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #d299c2;
+  transform: scale(1.1);
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  .main-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .main-content p {
+    font-size: 0.9rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navbar a {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .main-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .main-content p {
+    font-size: 0.85rem;
+  }
+}
+#pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 20px;  /* Adjust to give space above the footer */
+}
+
+.pagination-link {
+  text-decoration: none;
+  color: #8ec5fc;
+  font-size: 1rem;
+  margin: 0 15px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.pagination-link:hover {
+  color: #d299c2;
+  transform: scale(1.1);
+}
+
+.pagination-link:disabled {
+  color: #ccc;
+  pointer-events: none;
+}
+
+.pagination-link[disabled] {
+  pointer-events: none;
+}
+
+
+.about {
+  background: linear-gradient(120deg, #f8f9fa, #e0e6f4);
+  padding: 50px 30px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: #333;
+  font-family: 'Josefin Sans', sans-serif;
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+.about h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #8ec5fc;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.about p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: justify;
+  color: #333;
+}
+
+.about p strong {
+  font-weight: bold;
+  color: #d299c2;
+}
+
+.about p:last-of-type {
+  font-style: italic;
+  color: #6c757d;
+  text-align: center;
+}
+
+.about .highlight {
+  color: #d299c2;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.about .icon {
+  font-size: 2rem;
+  margin-top: 20px;
+  text-align: center;
+  color: #8ec5fc;
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 30px 20px;
+    margin: 30px 15px;
+  }
+
+  .about h2 {
+    font-size: 2rem;
+  }
+
+  .about p {
+    font-size: 1rem;
+  }
+}
+
+
+
+/* Social Media Links */
+.social-links {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.social-links a {
+  margin: 0 15px;
+  font-size: 5px;
+  color: #ffffff; /* Default icon color */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Change color on hover */
+.social-links a:hover {
+  color: #d299c2; /* Example color (LinkedIn Blue) */
+}
+
+.social-links i {
+  font-size: 20px;
+}
