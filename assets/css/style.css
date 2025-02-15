@@ -470,3 +470,26 @@ footer a:hover {
 .social-links i {
   font-size: 20px;
 }
+
+/* Styling for Facebook Comments Plugin */
+.fb-comments {
+  background-color: #ffffff; /* White background */
+  border: 2px solid #ddd; /* Light border */
+  padding: 20px; /* Padding around the comments */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  margin: 20px 0; /* Space around the comment box */
+}
+
+/* Optional: Make the iframe background match the page */
+.fb-comments iframe {
+  background-color: transparent !important; /* Transparent background inside the iframe */
+  border: none !important;
+}
+
+/* Optional: Set a maximum width for better alignment */
+.fb-comments {
+  max-width: 800px; /* Adjust this to fit your layout */
+  margin-left: auto;
+  margin-right: auto;
+}
