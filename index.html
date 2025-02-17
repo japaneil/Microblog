@@ -29,93 +29,17 @@
     <!-- Posts will be injected here -->
   </section>
   
-  <script>
-  const SUPABASE_URL = 'https://uunojuhlytecrgrwsuxi.supabase.co'; // Replace with your Supabase URL
-  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1bm9qdWhseXRlY3JncndzdXhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk1NDA0NjYsImV4cCI6MjA1NTExNjQ2Nn0.17yDBBp6jYWr62OnR-dBt0HiPxeOhYRWusr3ywRXT9A'; // Replace with your anon key
   
-  const postsPerPage = 5; // Number of posts per page
-  let currentPage = 1; // Track the current page
-  let totalPosts = 0; // Track the total number of posts
-  let totalPages = 0; // Track total pages based on the number of posts
-
-  const blogContainer = document.getElementById("blog-container");
-  const prevBtn = document.getElementById('prev-btn');
-  const nextBtn = document.getElementById('next-btn');
-
-  // Fetch posts from Supabase API with pagination
-  async function fetchPosts() {
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/blogs?order=created_at.desc&limit=${postsPerPage}&offset=${(currentPage - 1) * postsPerPage}`, {
-      method: 'GET',
-      headers: {
-        'apikey': SUPABASE_KEY,
-        'Authorization': `Bearer ${SUPABASE_KEY}`,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      }
-    });
-
-    // Parse the response as JSON
-    const posts = await response.json();
-
-    // Get the container for the blog posts
-    blogContainer.innerHTML = ""; // Clear existing content
-
-    // Loop through the posts and create HTML elements for each post
-    posts.forEach(post => {
-      const postElement = document.createElement("article");
-      postElement.classList.add("post");
-
-      postElement.innerHTML = `
-        <h2>${post.title}</h2>
-        <p class="date">${new Date(post.created_at).toDateString()}</p>
-        <p class="description">${post.content}</p>
-      `;
-
-      blogContainer.appendChild(postElement);
-    });
-
-    // Get total posts count from response headers and update total pages
-    const count = response.headers.get('content-range').split('/')[1];
-    totalPosts = parseInt(count);
-    totalPages = Math.ceil(totalPosts / postsPerPage);
-
-    // Update pagination buttons state
-    updatePaginationLinks();
-  }
-
-  // Handle page change (next/previous)
-  function changePage(direction) {
-    if (direction === 1 && currentPage < totalPages) {
-      currentPage++;
-      fetchPosts();
-    } else if (direction === -1 && currentPage > 1) {
-      currentPage--;
-      fetchPosts();
-    }
-  }
-
-  // Update pagination links state
-  function updatePaginationLinks() {
-    // If on the first page, disable the "Previous" button
-    prevBtn.disabled = currentPage === 1;
-    prevBtn.style.color = currentPage === 1 ? '#ccc' : '#8ec5fc';
-    
-    // If on the last page, disable the "Next" button
-    nextBtn.disabled = currentPage === totalPages;
-    nextBtn.style.color = currentPage === totalPages ? '#ccc' : '#8ec5fc';
-  }
-
-  // Initial fetch of posts
-  fetchPosts();
-</script>
-
 <section class="blog-posts">
-  <div id="posts-container"></div>
+  <div id="posts-container"></div> <!-- Container for blog posts -->
+</section>
   
   <!-- Minimal Pagination Controls -->
-  <div id="pagination-controls">
-    <a href="#" id="prev-btn" onclick="changePage(-1)" class="pagination-link">← Previous</a>
-    <a href="#" id="next-btn" onclick="changePage(1)" class="pagination-link">Next →</a>
+  <div id="blog-container"></div>
+
+  <div class="pagination-container">
+    <button id="prev-btn">← Previous</button>
+    <button id="next-btn">Next →</button>
   </div>
 </section>
   </main>
