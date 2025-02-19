@@ -178,6 +178,11 @@ nav a:hover {
 }
 /* Footer */
 
+footer {
+  text-align: center;
+  padding: 30px;
+}
+
 /* Ensure body and html take the full height of the page */
 html, body {
   height: 100%;
