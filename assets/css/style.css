@@ -49,6 +49,7 @@
   animation: sweepGradient 15s linear infinite; /* Slow down the animation */
   text-align: center;
 }
+
 nav a {
   color: white;
   margin: 0 15px;
@@ -69,6 +70,7 @@ nav a:hover {
   padding: 0 20px;
 }
 
+/* Post section starts here */
 .post {
   background-color: white;
   margin-bottom: 20px;
@@ -104,6 +106,8 @@ nav a:hover {
   margin-bottom: 20px;
   color: #393646;
 }
+
+/* Read more section starts here */
 
 .read-more {
   color: #3498db;
@@ -199,10 +203,6 @@ body {
 main {
   flex-grow: 1;
 }
-
-/* Footer styling */
-
-
 
 /* General reset */
 * {
@@ -391,6 +391,9 @@ footer a:hover {
     font-size: 0.85rem;
   }
 }
+
+/* Pagination Styles starts here */
+
 #pagination-controls {
   display: flex;
   justify-content: center;
@@ -422,7 +425,7 @@ footer a:hover {
   pointer-events: none;
 }
 
-
+/* About section starts here */
 .about {
   background: linear-gradient(120deg, #f8f9fa, #e0e6f4);
   padding: 50px 30px;
@@ -476,6 +479,8 @@ footer a:hover {
   color: #8ec5fc;
 }
 
+/* Mobile phone responsive adjustments */
+
 @media (max-width: 768px) {
   .about {
     padding: 30px 20px;
@@ -510,27 +515,11 @@ footer a:hover {
 
 /* Change color on hover */
 .social-links a:hover {
-  color: #d299c2; /* Example color (LinkedIn Blue) */
+  color: #d299c2;
 }
 
 .social-links i {
   font-size: 20px;
-}
-
-/* Styling for Facebook Comments Plugin */
-.fb-comments {
-  background-color: #ffffff; /* White background */
-  border: 2px solid #ddd; /* Light border */
-  padding: 20px; /* Padding around the comments */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
-  margin: 20px 0; /* Space around the comment box */
-}
-
-/* Optional: Make the iframe background match the page */
-.fb-comments iframe {
-  background-color: transparent !important; /* Transparent background inside the iframe */
-  border: none !important;
 }
 
 .search-container {
