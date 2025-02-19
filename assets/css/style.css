@@ -1,6 +1,4 @@
-/* Import fonts */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Questrial&display=swap');
-/* Define the gradient animation */
 @keyframes sweepGradient {
   0% {
     background-position: -200%;
@@ -535,4 +533,10 @@ footer a:hover {
   font-size: 16px;
   border: 2px solid #ccc;
   border-radius: 5px;
+}
+
+/* post class for supabase */
+.subtle{
+  color: #8ec5fc;
+  margin-bottom: 10px;
 }
