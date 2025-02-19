@@ -45,7 +45,6 @@
   background-size: 500% auto; /* Stretch the background to make the transition smoother */
   background-clip: text;
   -webkit-background-clip: text;
-  text-fill-color: transparent;
   -webkit-text-fill-color: transparent;
   animation: sweepGradient 15s linear infinite; /* Slow down the animation */
   text-align: center;
