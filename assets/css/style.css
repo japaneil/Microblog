@@ -152,16 +152,6 @@ nav a:hover {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* #prev-btn::before, #next-btn::before {
-  content: "←";
-  margin-right: 8px;
-}
-
-#next-btn::before {
-  content: "→";
-  margin-left: 8px;
-} */
-
 .pagination-container {
   display: flex;
   justify-content: center;
@@ -539,10 +529,17 @@ footer a:hover {
   border: none !important;
 }
 
-/* Optional: Set a maximum width for better alignment */
-.fb-comments {
-  max-width: 800px; /* Adjust this to fit your layout */
-  margin-left: auto;
-  margin-right: auto;
+.search-container {
+  text-align: center;
+  margin: 20px auto;
+  width: 80%;
 }
 
+#search-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
