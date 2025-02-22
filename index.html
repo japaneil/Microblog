@@ -25,6 +25,18 @@
     <div class="search-container">
       <input type="text" id="search-input" placeholder="Search logs...">
   </div>
+  <div id="goal-container">
+    <h2 class="goal-text">My Goals</h2>
+    <p class="goal-description">Learning C#:</p>
+    
+    <div class="progress-bar-container">
+      <div id="progress-bar" class="progress-bar">
+        <span id="progress-text"></span>
+      </div>
+    </div>
+  </div>
+
+
     <section class="blog-posts" id="blog-container">
       <!-- Blog posts will be dynamically inserted here -->
   </section>
@@ -64,7 +76,22 @@
       </a>
     </div>
   </footer>
-  
+  <script>
+    // Hardcoded progress percentage - change this value manually in the code when needed
+    let progress = 12.5; // This is where you update the progress value
+
+    // Update the progress bar when the page loads
+    window.onload = () => {
+      updateProgress(progress);
+    };
+
+    // Function to update the progress bar
+    function updateProgress(progress) {
+      document.getElementById('progress-bar').style.width = progress + '%';
+      
+    }
+  </script>
   <script src="assets/js/script.js"></script>
+  
 </body>
 </html>
