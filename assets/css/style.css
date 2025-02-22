@@ -352,6 +352,9 @@ footer a:hover {
   header h1 {
     font-size: 2.5rem;
   }
+  header{
+    padding-top: 20px;
+  }
 
   .main-content h2 {
     font-size: 1.8rem;
@@ -554,7 +557,7 @@ footer a:hover {
 }
 
 .goal-text {
-  font-size: 2.2rem;
+  font-size: 2rem;
   color: #333;
   margin-bottom: 10px;
   font-weight: 600;
@@ -611,4 +614,64 @@ footer a:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Subtle text shadow for emphasis */
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  #goal-container {
+    padding: 20px;
+    max-width: 325px;
+  }
+
+  .goal-text {
+    font-size: 1.6rem;
+  }
+
+  .goal-description {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .progress-bar-container {
+    height: 25px;
+    margin-top: 15px;
+  }
+
+  .progress-bar {
+    line-height: 25px;
+    font-size: 1rem;
+  }
+
+  #progress-text {
+    font-size: 1rem;
+  }
+}
+
+/* Further mobile optimization for smaller screens */
+@media (max-width: 480px) {
+  #goal-container {
+    padding: 15px;
+  }
+
+  .goal-text {
+    font-size: 1.4rem;
+  }
+
+  .goal-description {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+
+  .progress-bar-container {
+    height: 20px;
+  }
+
+  .progress-bar {
+    line-height: 20px;
+    font-size: 0.9rem;
+  }
+
+  #progress-text {
+    font-size: 0.9rem;
+  }
 }
