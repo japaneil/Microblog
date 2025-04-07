@@ -678,3 +678,43 @@ footer a:hover {
     font-size: 0.9rem;
   }
 }
+
+.quote-section {
+  padding: 50px 20px 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.quote-text {
+  font-size: 1.7rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #F4EEE0;
+  /* font-family: 'Josefin Sans', sans-serif; */
+  font-family: 'Nirmala UI', sans-serif;
+  line-height: 1.6;
+  opacity: 0.9;
+  letter-spacing: 0.3px;
+  position: relative;
+}
+
+/* Optional: a soft line above the quote to give structure without clutter */
+.quote-section::before {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 1px;
+  background-color: #ccc;
+  margin: 0 auto 20px;
+  opacity: 0.5;
+}
+
+/* Mobile optimization */
+@media screen and (max-width: 600px) {
+  .quote-text {
+    font-size: 1.3rem;
+    padding: 0 15px;
+  }
+}
