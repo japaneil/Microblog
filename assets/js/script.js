@@ -107,3 +107,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load posts on page load
     fetchAllPosts();
   });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const quoteEl = document.getElementById("quote-text");
+
+    fetch("https://thequoteshub.com/api/getquote")
+        .then(res => res.json())
+        .then(data => {
+            console.log("API response:", data); // DEBUG: See what's returned
+
+            const quote = data?.text || "Stay strong, stay focused.";
+            const author = data?.author || "Unknown";
+
+            quoteEl.textContent = `“${quote}” — ${author}`;
+        })
+        .catch(err => {
+            console.error("Quote API error:", err);
+            quoteEl.textContent = "“You’ve got this. Keep going.”";
+        });
+});

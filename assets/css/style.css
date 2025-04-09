@@ -714,7 +714,7 @@ footer a:hover {
 /* Mobile optimization */
 @media screen and (max-width: 600px) {
   .quote-text {
-    font-size: 1.3rem;
+    font-size: 1rem;
     padding: 0 15px;
   }
 }
