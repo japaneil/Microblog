@@ -108,21 +108,79 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchAllPosts();
   });
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const quoteEl = document.getElementById("quote-text");
+document.addEventListener("DOMContentLoaded", () => { // Renamed event listener function for clarity
+    const quoteSection = document.querySelector(".quote-section"); // Target the container div
+    if (!quoteSection) {
+        console.error("Quote section container not found!");
+        return;
+    }
+    const MAX_QUOTE_LENGTH = 200; // Max characters for the quote
+    const MAX_RETRIES = 5; // Max attempts to find a short quote
 
-    fetch("https://thequoteshub.com/api/getquote")
-        .then(res => res.json())
-        .then(data => {
+    const displayQuote = (quote, author) => {
+        // Clear previous content
+        quoteSection.innerHTML = '';
+
+        // Create quote element
+        const quoteP = document.createElement('p');
+        quoteP.classList.add('quote-text'); // Keep existing class for quote styling
+        quoteP.textContent = `“${quote}”`;
+
+        // Create author element
+        const authorP = document.createElement('p'); // Use a block element for the author
+        authorP.classList.add('quote-author');
+        authorP.textContent = `— ${author}`;
+
+        // Append to the section
+        quoteSection.appendChild(quoteP);
+        quoteSection.appendChild(authorP);
+    };
+
+    const displayDefaultQuote = () => {
+        // Ensure the container exists before trying to display
+        if (quoteSection) {
+            displayQuote("You’ve got this. Keep going.", "System");
+        }
+    };
+
+    const fetchAndDisplayShortQuote = async (retriesLeft) => {
+        if (retriesLeft <= 0) {
+            console.warn(`Could not find a short quote after ${MAX_RETRIES} attempts.`);
+            displayDefaultQuote();
+            return;
+        }
+
+        try {
+            const response = await fetch("https://thequoteshub.com/api/getquote");
+            if (!response.ok) {
+                throw new Error(`API request failed with status ${response.status}`);
+            }
+            const data = await response.json();
+
             console.log("API response:", data); // DEBUG: See what's returned
 
-            const quote = data?.text || "Stay strong, stay focused.";
+            const quote = data?.text;
             const author = data?.author || "Unknown";
 
-            quoteEl.textContent = `“${quote}” — ${author}`;
-        })
-        .catch(err => {
+            if (quote && quote.length <= MAX_QUOTE_LENGTH) {
+                // Ensure the container exists before trying to display
+                if (quoteSection) {
+                    displayQuote(quote, author);
+                }
+            } else {
+                console.log(`Quote too long (${quote?.length || 'N/A'} chars), retrying... (${retriesLeft - 1} left)`);
+                // Fetch another quote if the current one is too long
+                fetchAndDisplayShortQuote(retriesLeft - 1);
+            }
+        } catch (err) {
             console.error("Quote API error:", err);
-            quoteEl.textContent = "“You’ve got this. Keep going.”";
-        });
+            // Ensure the container exists before trying to display
+            if (quoteSection) {
+                displayDefaultQuote(); // Display default on error
+            }
+        }
+    };
+
+    // Initial fetch
+    fetchAndDisplayShortQuote(MAX_RETRIES);
 });

@@ -391,6 +391,10 @@ footer a:hover {
   .main-content p {
     font-size: 0.85rem;
   }
+
+  .blog-posts {
+    margin-top: 10px; /* Reduce top margin on small screens */
+  }
 }
 
 /* Pagination Styles starts here */
@@ -687,8 +691,21 @@ footer a:hover {
   position: relative;
 }
 
+/* Style for the quote author */
+.quote-author {
+  display: block; /* Ensure it takes its own line */
+  margin-top: 15px; /* Space between quote and author */
+  text-align: right; /* Align author to the right */
+  font-size: 1.1rem; /* Slightly smaller than quote text */
+  font-style: normal; /* Normal style, assuming quote is italic */
+  color: #ccc; /* Lighter color for distinction */
+  font-family: 'Nirmala UI', sans-serif; /* Match quote font family */
+}
+
+
+
 .quote-text {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   font-weight: 500;
   font-style: italic;
   color: #F4EEE0;
@@ -714,7 +731,10 @@ footer a:hover {
 /* Mobile optimization */
 @media screen and (max-width: 600px) {
   .quote-text {
-    font-size: 1rem;
+    font-size: 1.1rem;
     padding: 0 15px;
+  }
+  .quote-author {
+    font-size: 0.9rem; /* Slightly smaller than quote text */
   }
 }
