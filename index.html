@@ -11,7 +11,14 @@
     <meta name="keywords" content="neil, arora, Neil, Arora, Neil Arora, Japaneil, japaneil, India, india, student, Student, Developer, developer, portfolio, Portfolio, Student Developer, Software Engineer Portfolio, Full Stack Developer, Web Developer, Open Source Contributor, Tech Enthusiast, Personal Website Developer, AI Developer, Machine Learning Engineer, Python Developer, JavaScript Developer, Frontend Developer, Backend Developer, React.js Developer, Node.js Developer, Tech Projects Showcase, Startup Founder, Hackathon Winner, University Tech Leader, Research in Artificial Intelligence, Computer Science Portfolio, Neil Arora Developer, Indian Software Engineer, Student Innovator in India, Indian AI Developer, Tech Leader from India, AI Research Intern, Open Source Program Participant, Research Publications in AI">
     <meta name="author" content="Neil Arora">
   </head>
-<body>
+<script>
+    // Authentication check for all pages
+    if (sessionStorage.getItem('authenticated') !== 'true') {
+        // Redirect to auth page with return URL
+        const redirectUrl = encodeURIComponent(window.location.pathname);
+        window.location.href = `auth.html?redirect=${redirectUrl}`;
+    }
+</script>
   <header>
     <div class="logo">
       <h1 class="sweeping-gradient">Neil Arora.</h1>

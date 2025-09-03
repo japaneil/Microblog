@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Japaneil | Authentication Required</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Questrial', sans-serif;
+        }
+        
+        body {
+            background-color: #393646;
+            color: #F4EEE0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .auth-container {
+            background: linear-gradient(135deg, #2d2b3b 0%, #393646 100%);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+        
+        .logo {
+            margin-bottom: 30px;
+        }
+        
+        .sweeping-gradient {
+            font-size: 2.5rem;
+            font-family: "Josefin Sans", sans-serif;
+            color: transparent;
+            background-image: linear-gradient(
+                -225deg,
+                #d299c2 0%,
+                #8ec5fc 29%,
+                #d299c2 67%,
+                #8ec5fc 100%
+            );
+            background-size: 500% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: sweepGradient 15s linear infinite;
+        }
+        
+        @keyframes sweepGradient {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+            color: #F4EEE0;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+        
+        p {
+            margin-bottom: 25px;
+            line-height: 1.6;
+            color: #e0e6f4;
+        }
+        
+        .input-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #8ec5fc;
+        }
+        
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #4f4b5c;
+            border-radius: 8px;
+            background-color: #2d2b3b;
+            color: #F4EEE0;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #8ec5fc;
+        }
+        
+        button {
+            background: linear-gradient(to right, #8ec5fc, #d299c2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+            font-weight: bold;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .error-message {
+            color: #ff6b6b;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .hint {
+            margin-top: 25px;
+            font-size: 0.8rem;
+            color: #8ec5fc;
+        }
+        
+        @media (max-width: 500px) {
+            .auth-container {
+                padding: 30px 20px;
+            }
+            
+            .sweeping-gradient {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="logo">
+            <h1 class="sweeping-gradient">Neil Arora.</h1>
+        </div>
+        
+        <h2>Authentication Required</h2>
+        <p>These logs are password protected. Please enter the password to continue.</p>
+        
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter access password">
+        </div>
+        
+        <button id="login-btn">Access Microblogs</button>
+        
+        <div class="error-message" id="error-message">
+            Incorrect password. Please try again.
+        </div>
+        
+        <div class="hint">
+            Contact Neil directly if you need access.
+        </div>
+    </div>
+
+        <script>
+            const PASSWORD_HASH = 'a78b2835b6b47a871a4b473e2ca527d397836f9049e32b2d9c945d2e78d5b8044c148ce282d9661e18aaa5f52f4c8e3f2f7e94709e66c7787830a6a39fafc5cf';
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('password');
+            const loginBtn = document.getElementById('login-btn');
+            const errorMessage = document.getElementById('error-message');
+            
+            // Check if already authenticated
+            if (sessionStorage.getItem('authenticated') === 'true') {
+                redirectToRequestedPage();
+            }
+            
+            // Handle login button click
+            loginBtn.addEventListener('click', function() {
+                const encoder = new TextEncoder();
+                const data = encoder.encode(passwordInput.value);
+                
+                crypto.subtle.digest('SHA-512', data).then(hash => {
+                    const hashArray = Array.from(new Uint8Array(hash));
+                    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+                    
+                    if (hashHex === PASSWORD_HASH) {
+                        sessionStorage.setItem('authenticated', 'true');
+                        redirectToRequestedPage();
+                    } else {
+                        showError();
+                    }
+                });
+            });
+            
+            function redirectToRequestedPage() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const redirect = urlParams.get('redirect') || 'index.html';
+                window.location.href = redirect;
+            }
+            
+            function showError() {
+                errorMessage.style.display = 'block';
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+            
+            // Allow submitting with Enter key
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    loginBtn.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
